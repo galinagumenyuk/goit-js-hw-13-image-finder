@@ -1,0 +1,27 @@
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+}
+.list-item {
+  list-style: none;
+}
+.list-item {
+  margin-right: 30px;
+  margin-bottom: 30px;
+}
+.list-item:nth-child(2n) {
+  margin-right: 0px;
+}
+.list-item:nth-last-child(-n + 2) {
+  margin-bottom: 0px;
+}
+.stats {
+  display: flex;
+}
+.stats-item + .stats-item {
+  margin-left: 40px;
+}
+img {
+  height: 400px;
+  object-fit: cover;
+}
