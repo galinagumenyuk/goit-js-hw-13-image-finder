@@ -2,7 +2,7 @@ import ApiService from "./apiService.js";
 import cardTmpl from "./template.hbs";
 import * as _ from "lodash";
 import "./styles.css";
-
+//
 const inputEl = document.querySelector(".search-form");
 const container = document.querySelector(".gallery");
 const loadMoreBtn = document.querySelector('[data-action="load-more"]');
