@@ -1,18 +1,13 @@
 {
   "name": "goit-js-hw-13-image-finder",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "./src/index.js",
   "scripts": {
-    "dev": "parcel src/*.html",
-    "build": "parcel build ./src/index.html --public-url /goit-js-hw-13-image-finder/",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "gh-pages -d dist",
+    "dev": "parcel src/index.html",
+    "build": "parcel build src/index.html --public-url /goit-js-hw-13-image-finder/",
+    "deploy": "gh-pages -d ./dist",
     "predeploy": "npm run build"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/galinagumenyuk/goit-js-hw-13-image-finder.git"
   },
   "keywords": [],
   "author": "",
