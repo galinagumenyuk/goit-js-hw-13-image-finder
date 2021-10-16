@@ -5,6 +5,9 @@ import "./styles.css";
 import * as PNotify from "@pnotify/core";
 import * as PNotifyMobile from "@pnotify/mobile";
 import "@pnotify/core/dist/BrightTheme.css";
+const myStack = new PNotify.Stack({
+  dir1: "up",
+});
 
 const container = document.querySelector(".gallery");
 const loadMoreBtn = document.querySelector('[data-action="load-more"]');
@@ -29,6 +32,7 @@ function onInput(e) {
       if (data.length === 0) {
         PNotify.notice({
           text: "Please, enter a correct request!",
+          stack: myStack,
           modules: new Map([...PNotify.defaultModules, [PNotifyMobile, {}]]),
         });
       }
@@ -45,6 +49,7 @@ function onLoadMore() {
 
 function clearContainer() {
   container.innerHTML = "";
+  myStack.close(true);
 }
 
 function scroll() {
