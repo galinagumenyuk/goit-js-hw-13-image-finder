@@ -2,28 +2,38 @@ import ApiService from "./apiService.js";
 import cardTmpl from "./template.hbs";
 import * as _ from "lodash";
 import "./styles.css";
-//
-const inputEl = document.querySelector(".search-form");
+import * as PNotify from "@pnotify/core";
+import * as PNotifyMobile from "@pnotify/mobile";
+import "@pnotify/core/dist/BrightTheme.css";
+
 const container = document.querySelector(".gallery");
 const loadMoreBtn = document.querySelector('[data-action="load-more"]');
 
 const apiService = new ApiService();
 
-inputEl.addEventListener("input", _.debounce(onInput, 600));
+window.addEventListener("keyup", onInput);
 loadMoreBtn.addEventListener("click", onLoadMore);
 
 function onInput(e) {
-  e.preventDefault();
-  apiService.query = e.target.value;
-  if (apiService.query === "") {
-    return;
+  if (e.which === 13) {
+    e.preventDefault();
+    apiService.query = e.target.value;
+    if (apiService.query === "") {
+      return;
+    }
+    apiService.resetPage();
+    apiService.fetchPictures().then((data) => {
+      clearContainer();
+      container.insertAdjacentHTML("beforeend", cardTmpl(data));
+      loadMoreBtn.disabled = false;
+      if (data.length === 0) {
+        PNotify.notice({
+          text: "Please, enter a correct request!",
+          modules: new Map([...PNotify.defaultModules, [PNotifyMobile, {}]]),
+        });
+      }
+    });
   }
-  apiService.resetPage();
-  apiService.fetchPictures().then((data) => {
-    clearContainer();
-    container.insertAdjacentHTML("beforeend", cardTmpl(data));
-    loadMoreBtn.disabled = false;
-  });
 }
 
 function onLoadMore() {
