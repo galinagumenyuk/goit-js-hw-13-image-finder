@@ -21698,6 +21698,9 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
+var myStack = new PNotify.Stack({
+  dir1: "up"
+});
 var container = document.querySelector(".gallery");
 var loadMoreBtn = document.querySelector('[data-action="load-more"]');
 var apiService = new _apiService.default();
@@ -21722,6 +21725,7 @@ function onInput(e) {
       if (data.length === 0) {
         PNotify.notice({
           text: "Please, enter a correct request!",
+          stack: myStack,
           modules: new Map([].concat(_toConsumableArray(PNotify.defaultModules), [[PNotifyMobile, {}]]))
         });
       }
@@ -21738,6 +21742,7 @@ function onLoadMore() {
 
 function clearContainer() {
   container.innerHTML = "";
+  myStack.close(true);
 }
 
 function scroll() {
@@ -21775,7 +21780,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60292" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59812" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
