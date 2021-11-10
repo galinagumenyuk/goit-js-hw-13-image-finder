@@ -8,9 +8,11 @@ import "@pnotify/core/dist/BrightTheme.css";
 const myStack = new PNotify.Stack({
   dir1: "up",
 });
+import localStorage from "../src/localstorage";
 
 const container = document.querySelector(".gallery");
 const loadMoreBtn = document.querySelector('[data-action="load-more"]');
+const scrollBtn = document.querySelector(".btn_scroll");
 
 const apiService = new ApiService();
 
@@ -28,13 +30,14 @@ function onInput(e) {
     apiService.fetchPictures().then((data) => {
       clearContainer();
       container.insertAdjacentHTML("beforeend", cardTmpl(data));
-      loadMoreBtn.disabled = false;
+      loadMoreBtn.classList.remove("btn_loader--hidden");
       if (data.length === 0) {
         PNotify.notice({
           text: "Please, enter a correct request!",
           stack: myStack,
           modules: new Map([...PNotify.defaultModules, [PNotifyMobile, {}]]),
         });
+        loadMoreBtn.classList.add("btn_loader--hidden");
       }
     });
   }
@@ -58,5 +61,15 @@ function scroll() {
   lastLiItem[lastLiItem.length - (apiService.perPage - 1)].scrollIntoView({
     behavior: "smooth",
     block: "end",
+  });
+}
+
+scrollBtn.addEventListener("click", scrollUp);
+
+function scrollUp() {
+  let firstLiItem = document.querySelectorAll(".list-item");
+
+  firstLiItem[0].scrollIntoView({
+    behavior: "smooth",
   });
 }
