@@ -1,1 +1,42 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Document</title><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"><link rel="stylesheet" href="/goit-js-hw-13-image-finder/src.68bf8fc0.css"></head><body> <input type="text" name="query" autocomplete="off" placeholder="Search images..."> <ul class="gallery">  </ul> <button type="button" data-action="load-more" disabled=""> <span>Load more</span> </button> <script src="/goit-js-hw-13-image-finder/src.4c6b2dfc.js"></script> </body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+<link rel="stylesheet" href="/goit-js-hw-13-image-finder/src.1b9ae5b2.css"></head>
+<body>
+    <input type="text" name="query" autocomplete="off" placeholder="Search images...">
+    
+    <!-- switch theme -->
+    <div class="theme-switch">
+        <svg class="theme-switch__icon" role="img" aria-label="Иконка солнца">
+            <use href="/goit-js-hw-13-image-finder/sprite.097e5fe6.svg#sun"></use>
+        </svg>
+    
+        <div class="theme-switch__control">
+            <input class="theme-switch__toggle" type="checkbox" name="theme" id="theme-switch-toggle" aria-label="Переключить между тёмной и светлой темой">
+            <label aria-hidden="true" class="theme-switch__track" for="theme-switch-toggle">
+            </label>
+            <div aria-hidden="true" class="theme-switch__marker"></div>
+        </div>
+    
+        <svg class="theme-switch__icon" aria-label="Иконка луны">
+            <use href="/goit-js-hw-13-image-finder/sprite.097e5fe6.svg#moon"></use>
+        </svg>
+    </div>
+    
+
+    <ul class="gallery">
+        <!-- Список <li> с карточками изображений -->
+    </ul>
+    <button type="button" class="btn_loader btn_loader--hidden" data-action="load-more">
+<span>Load more</span>
+    </button>
+    <button type="button" class="btn_scroll">&uarr;</button>
+    <script src="/goit-js-hw-13-image-finder/src.82e77cfc.js"></script>
+</body>
+</html>
